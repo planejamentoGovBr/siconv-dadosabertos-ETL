@@ -1,0 +1,18 @@
+package routines;
+
+public class valida_cpf {
+
+  /**
+   * Verifica se uma String possui um valor numerico
+   * @param num
+   * @return
+   */
+	public static boolean isNum(String num){
+		try{
+			Double.parseDouble(num);
+			return true;
+		}catch(Exception ex){
+			return false;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType xmi:id="_8RKj86fZEeSXrqYwByAZxw" confirmationNeeded="false" name="Desenvolvimento">
+    <contextParameter xmi:id="_8RKj9KfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Server" prompt="con_prd_dados_abertos_Server?" promptNeeded="false" type="id_String" value="189.9.137.154"/>
+    <contextParameter xmi:id="_8RKj9afZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Schema" prompt="con_prd_dados_abertos_Schema?" promptNeeded="false" type="id_String" value="dados_abertos"/>
+    <contextParameter xmi:id="_8RKj9qfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Password" prompt="con_prd_dados_abertos_Password?" promptNeeded="false" type="id_Password" value="PpNuqKPJ9eY="/>
+    <contextParameter xmi:id="_8RKj96fZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Database" prompt="con_prd_dados_abertos_Database?" promptNeeded="false" type="id_String" value="prd"/>
+    <contextParameter xmi:id="_8RKj-KfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Port" prompt="con_prd_dados_abertos_Port?" promptNeeded="false" type="id_String" value="5432"/>
+    <contextParameter xmi:id="_8RKj-afZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Login" prompt="con_prd_dados_abertos_Login?" promptNeeded="false" type="id_String" value="yasmim.vasconcelos"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_8RKj-qfZEeSXrqYwByAZxw" confirmationNeeded="false" name="Homologacao">
+    <contextParameter xmi:id="_8RKj-6fZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Server" prompt="con_prd_dados_abertos_Server?" promptNeeded="false" type="id_String" value="189.9.137.154"/>
+    <contextParameter xmi:id="_8RKj_KfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Schema" prompt="con_prd_dados_abertos_Schema?" promptNeeded="false" type="id_String" value="dados_abertos"/>
+    <contextParameter xmi:id="_8RKj_afZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Password" prompt="con_prd_dados_abertos_Password?" promptNeeded="false" type="id_Password" value="PpNuqKPJ9eY="/>
+    <contextParameter xmi:id="_8RKj_qfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Database" prompt="con_prd_dados_abertos_Database?" promptNeeded="false" type="id_String" value="prd"/>
+    <contextParameter xmi:id="_8RKj_6fZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Port" prompt="con_prd_dados_abertos_Port?" promptNeeded="false" type="id_String" value="5432"/>
+    <contextParameter xmi:id="_8RKkAKfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Login" prompt="con_prd_dados_abertos_Login?" promptNeeded="false" type="id_String" value="yasmim.vasconcelos"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_8RKkAafZEeSXrqYwByAZxw" confirmationNeeded="false" name="Producao">
+    <contextParameter xmi:id="_8RKkAqfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Server" prompt="con_prd_dados_abertos_Server?" promptNeeded="false" type="id_String" value="189.9.137.191"/>
+    <contextParameter xmi:id="_8RKkA6fZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Schema" prompt="con_prd_dados_abertos_Schema?" promptNeeded="false" type="id_String" value="dados_abertos"/>
+    <contextParameter xmi:id="_8RKkBKfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Password" prompt="con_prd_dados_abertos_Password?" promptNeeded="false" type="id_Password" value="eIxHCG/BsaAoHUN6ER8BU65TP2OLlq3p"/>
+    <contextParameter xmi:id="_8RKkBafZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Database" prompt="con_prd_dados_abertos_Database?" promptNeeded="false" type="id_String" value="prd"/>
+    <contextParameter xmi:id="_8RKkBqfZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Port" prompt="con_prd_dados_abertos_Port?" promptNeeded="false" type="id_String" value="5432"/>
+    <contextParameter xmi:id="_8RKkB6fZEeSXrqYwByAZxw" comment="" name="con_prd_dados_abertos_Login" prompt="con_prd_dados_abertos_Login?" promptNeeded="false" type="id_String" value="holograma"/>
+  </talendfile:ContextType>
+</xmi:XMI>

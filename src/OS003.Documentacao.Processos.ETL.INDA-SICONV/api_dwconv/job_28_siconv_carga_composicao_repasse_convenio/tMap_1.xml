@@ -1,0 +1,109 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<externalNode i18n.job.component.parameters="Component Parameters:" i18n.job.properties="Propriedades" i18n.job.values="Values" i18n.mapper.table.for="Mapper table for " i18n.mapper.table.properties="Mapper table Properties" i18n.job.name="Nome" i18n.tmap.matching.mode="Matching-mode" i18n.mapper.table.isminimized="isMinimized" i18n.tmap.isreject="isReject" i18n.tmap.isrejectinnnerjoin="isRejectInnerJoin" i18n.tmap.isinnerjoin="isInnerJoin" i18n.tmap.expressionfilter="expressionFilter" i18n.mapper.table.metadata.entries="Metadata Table Entries" i18n.job.type="Type" i18n.mapper.table.expression="Expressão" i18n.tmap.isnullable="isNullable" i18n.tmap.constraint.entries="Constraint Table Entries" name="tMap_1" preview="pictures/_hauewJpsEeS-vNXOlX6Ktg-tMap_1-PREVIEW.bmp">
+  <parameters>
+    <column name="tStatCatcher Statistics">false</column>
+    <column name="Permitir execução em paralelo">false</column>
+    <column name="Mapping links display as: ">AUTO</column>
+    <column name="Temp data directory path: "></column>
+    <column name="Max buffer size (nb of rows): ">50000</column>
+    <column name="Visualizar informações">true</column>
+    <column name="Comentário"><![CDATA[Componente responsável por mapear os dados provenientes de 'Nota Empenho', 'Especie Empenho' e com a tabela 'Empenho' do SICONV.]]></column>
+    <column name="Use an existing validation rule">false</column>
+  </parameters>
+  <mapperTable type="input">
+    <table name="empenho" matching-mode="ALL_ROWS" lookup-mode="LOAD_ONCE" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false">
+      <metadataTableEntries>
+        <entry name="id_empn_empenho" type="long" expression="" isNullable="false"/>
+        <entry name="nu_empn_nota_empenho" type="String" expression="" isNullable="true"/>
+        <entry name="id_undd_unidade_emitente" type="String" expression="" isNullable="true"/>
+        <entry name="id_empn_ug" type="String" expression="" isNullable="true"/>
+        <entry name="id_empn_favorecido" type="String" expression="" isNullable="true"/>
+        <entry name="id_empn_especie_empenho" type="String" expression="" isNullable="false"/>
+        <entry name="co_empn_ugr" type="String" expression="" isNullable="true"/>
+        <entry name="ds_empn_tp_empenho" type="String" expression="" isNullable="true"/>
+        <entry name="co_empn_ptres" type="Integer" expression="" isNullable="true"/>
+        <entry name="co_empn_gestao_emit" type="String" expression="" isNullable="true"/>
+        <entry name="co_empn_fonte_recurso" type="String" expression="" isNullable="false"/>
+        <entry name="nu_empn_minuta" type="String" expression="" isNullable="true"/>
+        <entry name="co_empn_plano_interno" type="String" expression="" isNullable="true"/>
+        <entry name="ds_empn_esfera_orcamentaria" type="String" expression="" isNullable="true"/>
+        <entry name="dt_empn_emissao_emp" type="String" expression="" isNullable="true"/>
+        <entry name="ds_empn_origem_material" type="String" expression="" isNullable="true"/>
+        <entry name="nu_empn_interno_conc" type="String" expression="" isNullable="true"/>
+        <entry name="ds_empn_obs_empenho" type="String" expression="" isNullable="true"/>
+        <entry name="ds_empn_sit_empenho" type="String" expression="" isNullable="true"/>
+        <entry name="nu_empn_lista" type="String" expression="" isNullable="true"/>
+        <entry name="nu_empn_prog_trabalho" type="String" expression="" isNullable="true"/>
+        <entry name="co_empn_unid_orcamentaria" type="String" expression="" isNullable="true"/>
+        <entry name="co_empn_gestao_ref" type="String" expression="" isNullable="true"/>
+        <entry name="nr_empn_interno_conced_ref" type="String" expression="" isNullable="true"/>
+        <entry name="co_empn_nat_despesa_item" type="String" expression="" isNullable="true"/>
+        <entry name="ds_empn_descricao_item" type="String" expression="" isNullable="true"/>
+        <entry name="vl_empn_item_empenho" type="Double" expression="" isNullable="true"/>
+        <entry name="nu_empn_empenho_ref" type="String" expression="" isNullable="true"/>
+        <entry name="id_conv_convenio" type="Long" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="convenio" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="true" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true">
+      <metadataTableEntries>
+        <entry name="id" type="String" expression="empenho.id_conv_convenio == null ? null : Long.toString(empenho.id_conv_convenio)     " isNullable="false"/>
+      </metadataTableEntries>
+    </table>
+    <table name="especie_empenho" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="true" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true">
+      <metadataTableEntries>
+        <entry name="id" type="long" expression="Long.parseLong(empenho.id_empn_especie_empenho) " isNullable="false"/>
+        <entry name="descricao" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="output">
+    <table name="saida_empenho" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false">
+      <metadataTableEntries>
+        <entry name="id" type="long" expression="(long) Numeric.sequence(&quot;s1&quot;,1,1)  " isNullable="false"/>
+        <entry name="numero" type="String" expression="empenho.nu_empn_nota_empenho " isNullable="true"/>
+        <entry name="numero_minuta" type="String" expression="empenho.nu_empn_minuta " isNullable="true"/>
+        <entry name="id_convenio" type="Long" expression="convenio.id == null ? null : Long.parseLong(convenio.id.trim())  " isNullable="true"/>
+        <entry name="id_especie" type="Long" expression="especie_empenho.id == 0 ? -8 : especie_empenho.id " isNullable="true"/>
+        <entry name="cod_unidade_gestora_emitente" type="Long" expression="Long.parseLong(empenho.id_undd_unidade_emitente.trim())     " isNullable="true"/>
+        <entry name="cod_unidade_gestora_referencia" type="Long" expression="Long.parseLong(empenho.id_empn_ug.trim())    " isNullable="true"/>
+        <entry name="cod_unidade_gestora_responsavel" type="Long" expression="empenho.co_empn_ugr.trim().equalsIgnoreCase(&quot;NAO INFORMADO&quot;) ? null :
+Long.parseLong(empenho.co_empn_ugr.trim())       " isNullable="true"/>
+        <entry name="cod_gestao_emitente" type="Long" expression="Long.parseLong(empenho.co_empn_gestao_emit.trim())      " isNullable="true"/>
+        <entry name="cod_gestao_referencia" type="Long" expression="Long.parseLong(empenho.co_empn_gestao_ref.trim())    " isNullable="true"/>
+        <entry name="cod_fonte_recurso" type="Long" expression="Long.parseLong(empenho.co_empn_fonte_recurso.trim())      " isNullable="true"/>
+        <entry name="tipo_empenho" type="String" expression="empenho.ds_empn_tp_empenho.replace(&quot;,&quot;, &quot;&quot;).trim()      " isNullable="true"/>
+        <entry name="numero_plano_trabalho_resumido" type="Long" expression="Long.parseLong(empenho.co_empn_ptres.toString().trim())     " isNullable="true"/>
+        <entry name="numero_plano_interno" type="String" expression="empenho.co_empn_plano_interno  " isNullable="true"/>
+        <entry name="esfera_orcamentaria" type="String" expression="empenho.ds_empn_esfera_orcamentaria.replace(&quot;,&quot;, &quot;&quot;)     " isNullable="true"/>
+        <entry name="data_emissao" type="java.util.Date" expression="TalendDate.parseDate(&quot;dd/MM/yy&quot;,empenho.dt_empn_emissao_emp)      " isNullable="true"/>
+        <entry name="numero_interno_concedente" type="String" expression="empenho.nu_empn_interno_conc " isNullable="true"/>
+        <entry name="numero_interno_concedente_referencia" type="String" expression="empenho.nr_empn_interno_conced_ref  " isNullable="true"/>
+        <entry name="observacao" type="String" expression="empenho.ds_empn_obs_empenho.replace(&quot;,&quot;, &quot;&quot;)     " isNullable="true"/>
+        <entry name="situacao" type="String" expression="empenho.ds_empn_sit_empenho.replace(&quot;,&quot;, &quot;&quot;)     " isNullable="true"/>
+        <entry name="numero_lista" type="String" expression="empenho.nu_empn_lista " isNullable="true"/>
+        <entry name="numero_programa_trabalho" type="Long" expression="" isNullable="true"/>
+        <entry name="cod_unidade_orcamentaria" type="Long" expression="routines.valida_cpf.isNum(empenho.co_empn_unid_orcamentaria) ? Long.parseLong(empenho.co_empn_unid_orcamentaria.trim()) : null
+  " isNullable="true"/>
+        <entry name="numero_natureza_despesa_subitem" type="String" expression="empenho.co_empn_nat_despesa_item  " isNullable="true"/>
+        <entry name="descricao_natureza_despesa_subitem" type="String" expression="empenho.ds_empn_descricao_item " isNullable="true"/>
+        <entry name="valor" type="Double" expression="empenho.vl_empn_item_empenho " isNullable="true"/>
+        <entry name="numero_empenho_referencia" type="String" expression="empenho.nu_empn_empenho_ref " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="rejeitados" isMinimized="false" isReject="false" isRejectInnerJoin="true" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false">
+      <metadataTableEntries>
+        <entry name="id_nota_empenho" type="Integer" expression="(int)(long)empenho.id_empn_empenho " isNullable="true"/>
+        <entry name="nu_nota_empenho" type="String" expression="empenho.nu_empn_nota_empenho  " isNullable="true"/>
+        <entry name="id_convenio" type="Integer" expression="Relational.ISNULL(empenho.id_conv_convenio) ?  -9 :
+Integer.parseInt( Long.toString( empenho.id_conv_convenio ) )   
+
+
+    " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="var">
+    <table name="Var" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false"/>
+  </mapperTable>
+</externalNode>

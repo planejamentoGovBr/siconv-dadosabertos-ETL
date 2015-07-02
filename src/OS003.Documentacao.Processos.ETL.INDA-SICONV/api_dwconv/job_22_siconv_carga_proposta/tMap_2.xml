@@ -1,0 +1,60 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<externalNode i18n.job.component.parameters="Component Parameters:" i18n.job.properties="Propriedades" i18n.job.values="Values" i18n.mapper.table.for="Mapper table for " i18n.mapper.table.properties="Mapper table Properties" i18n.job.name="Nome" i18n.tmap.matching.mode="Matching-mode" i18n.mapper.table.isminimized="isMinimized" i18n.tmap.isreject="isReject" i18n.tmap.isrejectinnnerjoin="isRejectInnerJoin" i18n.tmap.isinnerjoin="isInnerJoin" i18n.tmap.expressionfilter="expressionFilter" i18n.mapper.table.metadata.entries="Metadata Table Entries" i18n.job.type="Type" i18n.mapper.table.expression="Expressão" i18n.tmap.isnullable="isNullable" i18n.tmap.constraint.entries="Constraint Table Entries" name="tMap_2" preview="pictures/_rkINIJf6EeSWApbS-vu9Ow-tMap_2-PREVIEW.bmp">
+  <parameters>
+    <column name="tStatCatcher Statistics">false</column>
+    <column name="Permitir execução em paralelo">false</column>
+    <column name="Mapping links display as: ">AUTO</column>
+    <column name="Temp data directory path: "></column>
+    <column name="Max buffer size (nb of rows): ">50000</column>
+    <column name="Visualizar informações">true</column>
+    <column name="Comentário"><![CDATA[Componente responsável por mapear os dados provenientes de 'Composicao Repasse Convenio', 'Qualificacao Proposta Proponente' e 'Tabela Convenio' com a tabela 'composicao_repasse_convenio' do SICONV.]]></column>
+    <column name="Use an existing validation rule">false</column>
+  </parameters>
+  <mapperTable type="input">
+    <table name="composicao_repasse_convenio" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false">
+      <metadataTableEntries>
+        <entry name="id_prog_programa" type="long" expression="" isNullable="false"/>
+        <entry name="id_conv_convenio" type="long" expression="" isNullable="false"/>
+        <entry name="id_prog_qualificacao" type="String" expression="" isNullable="true"/>
+        <entry name="vl_conv_repasse_atual" type="String" expression="" isNullable="true"/>
+        <entry name="nu_prog_emenda" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="qualificacao_proposta_proponente" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="true" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true">
+      <metadataTableEntries>
+        <entry name="id_prog_qualificacao" type="Integer" expression="Integer.parseInt(composicao_repasse_convenio.id_prog_qualificacao )" isNullable="true"/>
+        <entry name="ds_prog_qualificacao" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="convenio" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="true" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="true">
+      <metadataTableEntries>
+        <entry name="id" type="String" expression="Long.toString(composicao_repasse_convenio.id_conv_convenio )" isNullable="false"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="output">
+    <table name="saida_composicao_repasse_proposta" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false">
+      <metadataTableEntries>
+        <entry name="id" type="long" expression="Numeric.sequence(&quot;s1&quot;,1,1) " isNullable="false"/>
+        <entry name="id_convenio" type="Long" expression="Long.parseLong(convenio.id) " isNullable="true"/>
+        <entry name="emenda_id_programa" type="Long" expression="composicao_repasse_convenio.id_prog_programa   " isNullable="true"/>
+        <entry name="emenda_numero" type="Long" expression="routines.valida_cpf.isNum(composicao_repasse_convenio.nu_prog_emenda ) == true ? Long.parseLong(composicao_repasse_convenio.nu_prog_emenda )  : null  " isNullable="true"/>
+        <entry name="emenda_id_programa_qualificacao" type="Long" expression="Long.parseLong(composicao_repasse_convenio.id_prog_qualificacao ) " isNullable="true"/>
+        <entry name="tipo" type="String" expression="qualificacao_proposta_proponente.ds_prog_qualificacao.toUpperCase()   " isNullable="true"/>
+        <entry name="valor_repasse" type="Double" expression="composicao_repasse_convenio.vl_conv_repasse_atual.contains(&quot;,&quot;) ?
+Double.parseDouble(composicao_repasse_convenio.vl_conv_repasse_atual.replace(',', '.'))  :
+Double.parseDouble(composicao_repasse_convenio.vl_conv_repasse_atual)          " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+    <table name="rejeitados" isMinimized="false" isReject="false" isRejectInnerJoin="true" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false">
+      <metadataTableEntries>
+        <entry name="ID_CONV_CONVENIO" type="String" expression="Long.toString(composicao_repasse_convenio.id_conv_convenio ) " isNullable="true"/>
+        <entry name="ID_PROG_QUALIFICACAO" type="String" expression="composicao_repasse_convenio.id_prog_qualificacao  " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="var">
+    <table name="Var" isMinimized="true" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false"/>
+  </mapperTable>
+</externalNode>

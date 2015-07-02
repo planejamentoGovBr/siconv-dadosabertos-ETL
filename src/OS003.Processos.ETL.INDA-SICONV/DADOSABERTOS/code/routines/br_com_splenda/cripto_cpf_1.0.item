@@ -1,0 +1,37 @@
+package routines;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class cripto_cpf {
+
+	public static MessageDigest md = null;
+
+	static {
+		try {
+			// Pode-se usar o algoritmo MD5 tambem,
+			// basta substituir na linha abaixo.
+			md = MessageDigest.getInstance("SHA-1");
+		} catch (NoSuchAlgorithmException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public static char[] hexCodes(byte[] text) {
+		char[] hexOutput = new char[text.length * 2];
+		String hexString;
+		for (int i = 0; i < text.length; i++) {
+			hexString = "00" + Integer.toHexString(text[i]);
+			hexString.toUpperCase().getChars(hexString.length() - 2,
+					hexString.length(), hexOutput, i * 2);
+		}
+		return hexOutput;
+	}
+
+	public static String criptografar(String cpf) {
+		if (md != null) {
+			return new String(hexCodes(md.digest(cpf.getBytes())));
+		}
+		return null;
+	}
+}

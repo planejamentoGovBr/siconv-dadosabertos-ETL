@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd">
+  <talendfile:ContextType xmi:id="_8Zh1w6fZEeSXrqYwByAZxw" confirmationNeeded="false" name="Desenvolvimento">
+    <contextParameter xmi:id="_8Zh1xKfZEeSXrqYwByAZxw" comment="" name="dir_log" prompt="dir_log?" promptNeeded="false" type="id_String" value="C:/processo_etl/log/api_siconv/"/>
+    <contextParameter xmi:id="_8Zh1xafZEeSXrqYwByAZxw" comment="" name="dir_entrada" prompt="dir_entrada?" promptNeeded="false" type="id_String" value="C:/processo_etl/entrada/api_siconv/"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_8Zh1xqfZEeSXrqYwByAZxw" confirmationNeeded="false" name="Homologacao">
+    <contextParameter xmi:id="_8Zh1x6fZEeSXrqYwByAZxw" comment="" name="dir_log" prompt="dir_log?" promptNeeded="false" type="id_String" value="/processo_etl/log/api_siconv/"/>
+    <contextParameter xmi:id="_8Zh1yKfZEeSXrqYwByAZxw" comment="" name="dir_entrada" prompt="dir_entrada?" promptNeeded="false" type="id_String" value="/processo_etl/entrada/api_siconv/"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_8Zh1yafZEeSXrqYwByAZxw" confirmationNeeded="false" name="Producao">
+    <contextParameter xmi:id="_8Zh1yqfZEeSXrqYwByAZxw" comment="" name="dir_log" prompt="dir_log?" promptNeeded="false" type="id_String" value="/processo_etl/log/api_siconv/"/>
+    <contextParameter xmi:id="_8Zh1y6fZEeSXrqYwByAZxw" comment="" name="dir_entrada" prompt="dir_entrada?" promptNeeded="false" type="id_String" value="/processo_etl/entrada/api_siconv/"/>
+  </talendfile:ContextType>
+</xmi:XMI>

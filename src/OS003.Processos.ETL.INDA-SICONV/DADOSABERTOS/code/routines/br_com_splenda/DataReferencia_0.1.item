@@ -1,0 +1,34 @@
+package routines;
+
+public class DataReferencia {
+
+	/**
+	 * Método responsável por retornar o Ano de Referência
+	 * @return
+	 */
+	public static Integer getAnoReferencia(){
+		Integer anoReferencia = null;
+		Integer ano = TalendDate.getPartOfDate("YEAR",TalendDate.getCurrentDate());
+		Integer mes = TalendDate.getPartOfDate("MONTH", TalendDate.getCurrentDate()) + 1;
+		if(mes == 1){
+			anoReferencia = ano - 1;
+		} else {
+			anoReferencia = ano;
+		}
+		return anoReferencia;
+	}
+	
+	/**
+	 * Método responsável por retornar o Mês de Referência
+	 * @return
+	 */
+	public static Integer getMesReferencia(){
+		Integer mesReferencia = TalendDate.getPartOfDate("MONTH",TalendDate.getCurrentDate()) + 1;
+		if(mesReferencia == 1) {
+			mesReferencia = 12;
+		} else {
+			mesReferencia = mesReferencia - 1;
+		}
+		return mesReferencia;
+	}
+}

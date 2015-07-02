@@ -1,0 +1,12 @@
+package routines;
+
+public class Comparacao {
+
+    public static boolean comparaInteiros (int int1,int int2) {
+    	if (int1==int2){
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+}

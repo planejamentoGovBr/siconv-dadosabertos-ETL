@@ -1,0 +1,121 @@
+package routines;
+
+public class GeradorDados {
+
+    public static String getCargo() {
+    	String[] list = {"Auditor","Analista","Biblioteconomista","Contador","Dentista","Economista","Médico","Analista de Sistemas","Historiador","Jornalista","Marceneiro","Nutricionista","Oceanografo","Professor","Programador","Quimico","Recepcionista","Tecnico em Eletronica","Tecnico Administrativo"};
+        Integer random = 0 + ((Long) Math.round(Math.random() * (list.length - 1 - 0))).intValue();
+        return list[random];
+        
+    }
+    
+    /***** 
+     * getNome: getNome() 
+     * {Category} GeradorDados
+     * {talendTypes} String
+	 * {example} getNome() 
+     * */
+
+    public static String getNome() {
+    	String[] list = {"Aaron","Adilson","Adriano","Alexandre","Alexsandro","Alicia","Aline","Alisson","Alyson","Amanda","Ana","Anderson","Andre","Andrea","Andrews","André","Antonio","Armando","Arthur","Augusto","Beatriz","Bernardo","Bruna","Bruno","Caio","Camila","Carolina","Caroline","Catharina","Celso","Christiane","Cinthya","Clara","Cristian","Cássio","Daiana","Daniel","Daniela","Danielle","Davi","David","Deluan","Denis","Denise","Dhiego","Dhyego","Diego","Débora","Edimilson","Elissa","Emanuel","Emerson","Erick","Estefânia","Estêvão","Eurico","Fabiana","Fabiano","Fabricio","Felipe","Fernanda","Fernando","Filipe","Flavia","Florisvaldo","Flávia","Flávio","Francisca","Fábio","Gabriel","Gabriela","Gabriella","Giancarlo","Giovanna","Graziane","Guilherme","Gustavo","Helana","Hellena","Helton","Henrique","Hildenei","Hélio","Igor","Isabela","Israel","Italo","Itanúsia","Ivan","Jefferson","Jessica","Jorge","Jose","Joselio","João","Jucelino","Julia","Juliana","Julianna","Juliano","Júnia","Helvécio","Hervésso","Hervertz","Karina","Karolina","Lara","Lazlo","Leandro","Leonardo","Leticia","Letícia","Leydson","Lilian","Lucas","Luciano","Lucien","Ludimila","Ludmila","Luiz","Lílian","Lívio","Lúcio","Macleuler","Maiara","Manuela","Marcelo","Marcio","Marco","Marcos","Mardem","Maria","Mariana","Marilia","Marina","Marília","Mateus","Matheus","Maxuel","Maíra","Melina","Mizael","Moema","Moira","Murilo","Márcio","Nara","Natalia","Nathália","Natália","Neemias","Otilie","Patricia","Patrick","Patrícia","Paula","Paulo","Pedro","Percival","Phelipe","Poliane","Priscilla","Pâmela","Rafael","Rafaela","Raian","Ramon","Raone","Raphael","Raquel","Rebeca","Renan","Renata","Renato","Ricardo","Roberta","Roberto","Rodrigo","Roger","Romero","Ronaldo","Rosa","Rosely","Sabrina","Samara","Sergio","Silvana","Silvia","Stella","Sued","Suzana","Taiana","Tainara","Tayanna","Telmo","Thais","Thalita","Thaís","Thiago","Tiago","Tony","Uiliana","Valéria","Vanessa","Vivian","Viviane","Wagner","Walmar","Walter","Wanessa","Wellington","Wilder","Willian","Yasmin","Ygor","Yuri","Álvaro"};
+        Integer random = 0 + ((Long) Math.round(Math.random() * (list.length - 1 - 0))).intValue();
+        return list[random];
+        
+    }
+
+    /***** 
+     * getNome: getSobrenome() 
+     * {Category} GeradorDados
+     * {talendTypes} String
+	 * {example} getSobrenome() 
+     * */    public static String getSobrenome() {
+    	String[] list = {"Aires","Afonso","Alcantara","Alvares","Almeida","Alves","Amaral","Acosta","Antunes","Antares","Aparicao","Araujo","Assaife","Assis","Athayde","Aubrey","Apolonio","Azevedo","Batista","Bertoldo","Berwanger","Bezerra","Bonafe","Borges","Botelho","Braga","Brahuna","Brey","Brito","Brittes","Brunacci","Brígida","Cabral","Calixto","Camargos","Camilato","Cardoso","Camoes","Carrasco","Carvalho","Cauper","Ciqueira","Cevanatto","Chaves","Chedid","Christian","Clayton","Clemente","Coelho","Corrêa","Costa","Coutinho","Cristina","Cruz","César","Daniel","Deivid","Denismar","Diniz","Diogenes","Eduardo","Eichler","Elias","Elizio","Enrico","Eustáquio","Evilasio","Evlaine","Faber","Falcão","Feitosa","Felipe","Fernanda","Fernandes","Ferrais","Ferreira","Ferret","Figueiredo","Fiorott","Francesca","Francisca","Franco","Freitas","Fritz","Furlan","Gael","Gabrielle","Garcia","Gigliotti","Glukhas","Gomes","Gonçalves","Guntzel","Gurgel","Gusmao","Helder","Holtz","Henrique","Hitomi","Holanda","Isabela","Jacob","Jorge","Josué","Jesuino","Justino","Jácomo","Kirliam","Kyoshi","Ladeira","Lamounier","Lovattel","Lemos","Lima","Loiola","Lopes","Lossio","Macedo","Machado","Madureira","Magalhaes","Marcelino","Marques","Martins","Mateus","Matias","Matos","Matsunaga","Max","Medeiros","Melo","Mendes","Mendonça","Mesquita","Moraes","Moreira","Morello","Navarro","Neves","Nogueira","Nunes","Nóbrega","Oliveira","Pappas","Passos","Penna","Pereira","Perpétuo","Piedade","Pinheiro","Pires","Poubel","Quintela","Rabello","Ramos","Rangel","Rayol","Rezende","Ribeiro","Rios","Roberto","Rocha","Rodrigo","Rodrigues","Rogerio","Rosario","Salete","Salgado","Santana","Santos","Satiê","Sergio","Silva","Smith","Soares","Sousa","Souza","Susumu","Tavares","Teatini","Teixeira","Tozzato","Trindade","Teruhiko","Telulito","Valesi","Valério","Vieira","Vilela","Wilson","Yamasaki"};
+        Integer random = 0 + ((Long) Math.round(Math.random() * (list.length - 1 - 0))).intValue();
+        return list[random];
+    }
+    
+    public static Integer getNumero(int d, int e){
+    	
+    	Integer i = (int)-1;
+    	
+    	while (i.intValue()<d){
+    		i=  (int) (1+Math.random()*e);
+    	}
+    	
+    	return i;
+    }
+    
+    public static Integer getDataRandomica (){
+    	String  dia = "";
+    	String  mes = getNumero(1, 12).toString();
+    	String  ano = getNumero(1940, 1993).toString();
+
+    	// Acrescenta numero zero quando o numero do mes for menor que 10 
+    	if (Integer.parseInt(mes)<10){
+    		mes = "0" + mes;
+    	}
+    	
+    	// Trata meses com 28, 29, 30 e 31 dias 
+    	if (mes=="01" || mes=="03" || mes=="05" || mes=="07" || mes=="08" || mes=="10" || mes=="12" ){
+    		dia = getNumero(1, 31).toString();
+    	} else if (mes=="02"){ // Tratamento para o mes de fevereiro
+    		// Tratamento para ano bisexto
+    		if (Integer.parseInt(ano) % 4 == 0){
+    			dia = getNumero(1, 29).toString();
+    		} else {
+    			dia = getNumero(1, 28).toString();
+    		}
+    	  // Tratamento para os meses com 30 dias	
+    	} else {
+    		dia = getNumero(1, 30).toString();
+    	}
+    	
+    	// Acrescenta numero zero quando o numero do dia for menor que 10 
+    	if (Integer.parseInt(dia)<10){
+    		dia = "0" + dia;
+    	}
+
+    	return Integer.parseInt(ano + mes +dia);
+    	
+    }
+    
+    /***** 
+     * getDataRandomica: getDataRandomica(Integer anoInicio, Integer anoFim) 
+     * {Category} GeradorDados
+     * {talendTypes} Integer
+	 * {example} getDataRandomica (1962,1985) 
+     * */
+    public static Integer getDataRandomica (Integer anoInicio, Integer anoFim){
+    	String  dia = "";
+    	String  mes = getNumero(1, 12).toString();
+    	String  ano = getNumero(anoInicio, anoFim).toString();
+
+    	// Acrescenta numero zero quando o numero do mes for menor que 10 
+    	if (Integer.parseInt(mes)<10){
+    		mes = "0" + mes;
+    	}
+    	
+    	// Trata meses com 28, 29, 30 e 31 dias 
+    	if (mes=="01" || mes=="03" || mes=="05" || mes=="07" || mes=="08" || mes=="10" || mes=="12" ){
+    		dia = getNumero(1, 31).toString();
+    	} else if (mes=="02"){ // Tratamento para o mes de fevereiro
+    		// Tratamento para ano bisexto
+    		if (Integer.parseInt(ano) % 4 == 0){
+    			dia = getNumero(1, 29).toString();
+    		} else {
+    			dia = getNumero(1, 28).toString();
+    		}
+    	  // Tratamento para os meses com 30 dias	
+    	} else {
+    		dia = getNumero(1, 30).toString();
+    	}
+    	
+    	// Acrescenta numero zero quando o numero do dia for menor que 10 
+    	if (Integer.parseInt(dia)<10){
+    		dia = "0" + dia;
+    	}
+
+    	return Integer.parseInt(ano + mes +dia);
+    	
+    }
+}

@@ -1,0 +1,267 @@
+package routines;
+import java.util.HashMap;
+
+/*
+ * user specification: the function's comment should contain keys as follows: 1. write about the function's comment.but
+ * it must be before the "{talendTypes}" key.
+ * 
+ * 2. {talendTypes} 's value must be talend Type, it is required . its value should be one of: String, char | Character,
+ * long | Long, int | Integer, boolean | Boolean, byte | Byte, Date, double | Double, float | Float, Object, short |
+ * Short
+ * 
+ * 3. {Category} define a category for the Function. it is required. its value is user-defined .
+ * 
+ * 4. {param} 's format is: {param} <type>[(<default value or closed list values>)] <name>[ : <comment>]
+ * 
+ * <type> 's value should be one of: string, int, list, double, object, boolean, long, char, date. <name>'s value is the
+ * Function's parameter name. the {param} is optional. so if you the Function without the parameters. the {param} don't
+ * added. you can have many parameters for the Function.
+ * 
+ * 5. {example} gives a example for the Function. it is optional.
+ */
+public class Descaracterizador {
+
+	public static boolean isNumero (String str)  	{  
+		// Tenta converter a string em double
+		try{  
+			Double.parseDouble(str);  
+		}  
+		// Senao converter não é número
+		catch(NumberFormatException nfe){  
+			return false;  
+		}  
+		return true;  
+	}   
+	
+	private static HashMap<Integer,Integer> setVetorSubstituicao(){
+
+		HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+		map.put(0, 3);
+		map.put(1, 8);
+		map.put(2, 0);
+		map.put(3, 4);
+		map.put(4, 9);
+		map.put(5, 1);
+		map.put(6, 7);
+		map.put(7, 2);
+		map.put(8, 5);
+		map.put(9, 6);
+		
+		return map;
+	}
+	public static int getValorVetorSubstituicao(int NumeroDoValor){
+
+		for (int i=0;i<setVetorSubstituicao().size();i++){
+			if (setVetorSubstituicao().get(i)==NumeroDoValor){
+				return i;
+			} 
+		} 
+		return -1;
+	}
+	
+	public static int getIndiceVetorSubstituicao(int NumeroDoIndice){
+		return setVetorSubstituicao().get(NumeroDoIndice);
+	}
+	
+	public static String somaChaveComNumerosDaString(String numero){
+		// Cria a variavel para criar um novo numero para o retorno
+		StringBuilder textoCifrado = new StringBuilder();
+		// Captura a chave que estara na primeira posicao da string
+		Integer chave = Character.getNumericValue(numero.charAt(0));
+		// Armazenador da soma da Chave com o Digito atual da string
+		Integer somaChaveComDigitos = -1;
+		// Armazena a chave na primeira posicao da string
+		textoCifrado.append(chave);
+		
+		for (int i=1;i<numero.length();i++){
+			somaChaveComDigitos = Character.getNumericValue(numero.charAt(i)) + chave;
+			// A soma da chave com o digito devera ser menor que 10, senao havera carry.
+			if (somaChaveComDigitos<10){
+				textoCifrado.append(somaChaveComDigitos);
+			// Se a soma anterior for maior que 10, desconsidera a soma e armazena o numero sem soma
+			} else {
+				textoCifrado.append(Character.getNumericValue(numero.charAt(i)));
+			}
+		} 
+		// retorna a string montada
+		return textoCifrado.toString();
+	}
+
+	public static String subtraiChaveComNumerosDaString(String numero){
+		// Cria a variavel para criar um novo numero para o retorno
+		StringBuilder textoCifrado = new StringBuilder();
+		// Captura a chave que estara na primeira posicao da string
+		Integer chave = Character.getNumericValue(numero.charAt(0));
+		// Armazenador da soma da Chave com o Digito atual da string
+		Integer somaChaveComDigitos = -1;
+		// Armazena a chave na primeira posicao da string
+		textoCifrado.append(chave);
+		
+		for (int i=1;i<numero.length();i++){
+			somaChaveComDigitos = Character.getNumericValue(numero.charAt(i)) - chave;
+			// A soma da chave com o digito devera ser menor que 10, senao havera carry.
+			if (somaChaveComDigitos>=0){
+				textoCifrado.append(somaChaveComDigitos);
+			// Se a soma anterior for maior que 10, desconsidera a soma e armazena o numero sem soma
+			} else {
+				textoCifrado.append(Character.getNumericValue(numero.charAt(i)));
+			}
+		} 
+		// retorna a string montada
+		return textoCifrado.toString();
+	}
+
+	
+	public static String aplicaVetorSubstituicao (String numero){
+		StringBuilder textoCifrado = new StringBuilder();
+		
+		// Aplica o vetor de substituicao para todos os caracteres da string
+		for (int i=0;i<numero.length();i++){
+			textoCifrado.append(getIndiceVetorSubstituicao(Character.getNumericValue(numero.charAt(i))));
+		}
+		return textoCifrado.toString();
+	}
+
+	public static String reverteVetorSubstituicao (String numero){
+		StringBuilder textoCifrado = new StringBuilder();
+		
+		// Aplica o vetor de substituicao para todos os caracteres da string
+		for (int i=0;i<numero.length();i++){
+			textoCifrado.append(getValorVetorSubstituicao(Character.getNumericValue(numero.charAt(i))));
+		}
+		return textoCifrado.toString();
+	}
+
+	
+	public static String inverteString (String numero){
+		StringBuilder textoCifrado = new StringBuilder();
+		// Carrega a string
+		textoCifrado.append(numero);
+		// Inverte string
+		textoCifrado.reverse();
+		// Retorna string
+		return textoCifrado.toString();
+	}
+	
+	public static String ocultaChave (String numero){
+		StringBuilder textoCifrado = new StringBuilder();
+		// Preenche o textoCifrado com o numero
+		textoCifrado.append(numero);
+		// Captura a chave que esta na ultima posicao
+		Integer chave = Character.getNumericValue(numero.charAt(0));
+		// Apaga a chave para colocala na ultima posicao
+		textoCifrado.delete(0, 1);
+		
+		// Se o numero for composto por so 1 digito retorne 
+		if(numero.length()==1){
+			textoCifrado.append(numero);
+		}  else {
+			if((chave>=0) && (chave<9)){
+				textoCifrado.append(chave+1);
+			} else {
+				textoCifrado.append(0);
+			}	
+		}
+
+		return textoCifrado.toString();
+	}
+	
+	public static String buscaChave (String numero){
+		StringBuilder textoCifrado = new StringBuilder();
+		// Preenche o textoCifrado com o numero
+		textoCifrado.append(numero);
+		// Captura a chave que esta na ultima posicao
+		Integer chave = Character.getNumericValue(numero.charAt(numero.length()-1));
+		
+		// Se o numero for composto por so 1 digito retorne 
+		if(numero.length()==1){
+			textoCifrado.append(numero);
+		} else {
+			// Apaga a chave para colocala na ultima posicao
+			textoCifrado.deleteCharAt(textoCifrado.length()-1);
+			if((chave>0) && (chave<=9)){
+				numero="";
+				numero = Integer.toString(chave-1)+ textoCifrado.toString();
+			} else if (chave==0){
+				numero="";
+				numero = Integer.toString(9)+ textoCifrado.toString();
+				textoCifrado.append(9);
+			}
+		} 
+		
+		return numero;
+	}
+	
+	public static String deslocaUmaCasa (String numero){
+		String auxPrimeiroDigito =numero.substring(0,1);
+		String aux              = numero.substring(1, numero.length());
+		
+		// Retorna string
+		return aux+auxPrimeiroDigito;
+	}
+	
+	public static String VoltaDeslocaUmaCasa (String numero){
+		String auxPrimeiroDigito =numero.substring(numero.length()-1);
+		String aux              = numero.substring(0, numero.length()-1);
+		// Retorna string
+		return auxPrimeiroDigito+aux;
+	}
+
+    /***** 
+     * CriptografaNumero: cripografaNumero(String numero) 
+     * {Category} Descaracterizador
+     * {talendTypes} String
+	 * {example} cripografaNumero ("200") 
+     * */
+
+	public static String cripografaNumero(String numero){
+		// Soma
+		// Aplica vetor de substituição
+		// Inverte a string
+		// Oculta a chave
+		// Retorna
+		String aux1 = aplicaVetorSubstituicao(		
+				ocultaChave(
+						inverteString(
+								deslocaUmaCasa((numero)))));
+		String aux2 = aplicaVetorSubstituicao(		
+				ocultaChave(
+						inverteString(
+								deslocaUmaCasa((aux1)))));
+		if (numero.length()==1) {
+			return numero;
+		} else{
+			return	aux2; 
+			}
+			
+	}
+    /***** 
+     * DeCriptografaNumero: cripografaNumero(String numero) 
+     * {Category} Descaracterizador
+     * {talendTypes} String
+	 * {example} cripografaNumero ("200") 
+     * */
+	
+	public static String deCripografaNumero(String numero){
+		// Busca chave 
+		// Inverte a string
+		// Aplica vetor de substituição
+		// Soma
+		// retorna 
+		String aux1 = (((
+				VoltaDeslocaUmaCasa(inverteString(
+						buscaChave(
+								reverteVetorSubstituicao(numero))))))).toString();
+		String aux2 = (((
+				VoltaDeslocaUmaCasa(inverteString(
+						buscaChave(
+								reverteVetorSubstituicao(aux1))))))).toString();
+		
+		if (numero.length()==1){
+			return numero;
+		} else {
+			return aux2;
+		}
+		
+	}
+}

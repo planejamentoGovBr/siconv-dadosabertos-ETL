@@ -1,0 +1,413 @@
+package routines;
+
+import java.util.ArrayList;
+
+public class TrataUorg {
+	/*****
+	 * retornaUorgAcima: Retorna qual o primeiro uorg acima da uorg atual.
+	 * {Category} TrataUorg 
+	 * {talendTypes} Integer
+	 * {example} retornaUorgAcima (String hierarquia, String strDivisorDeHierarquia)
+	 * */
+	public static String retornaUorgAcima(String hierarquia,
+			String strDivisorDeHierarquia) {
+		/*
+		 * FINALIDADE: FUNCAO QUE RETORNA O PRIMEIRO ORGAO ACIMA DE CERTA
+		 * UNIDADE
+		 * **************************************************************
+		 * ********************************** ERROS: QUALQUER ERRO NOS
+		 * ARGUMENTOS DO METODO (EXEMPLO HIERARQUIA NULA) A FUNCAO RETONA -1.
+		 * ****
+		 * ******************************************************************
+		 * *************************** EXEMPLO1
+		 * ReturnOrgaoAcima("26(o)->1326(n)->2626(n)") - RETORNARÁ 26.
+		 * ***********
+		 * ***********************************************************
+		 * *************************** EXEMPLO2
+		 * ReturnOrgaoAcima("26(o)->1326(n)->2626(n)->526(O)") - RETORNARÁ 526.
+		 * **
+		 * ********************************************************************
+		 * *************************** EXEMPLO5 ReturnOrgaoAcima("","","") OU
+		 * ReturnOrgaoAcima(null,null,null)- RETORNARÁ -1.
+		 */
+
+		String orgao = "";
+		String[] arrayHierarquia = null;
+		// Se faltar algum parametro retorna -1
+		if (hierarquia == null || hierarquia.isEmpty()
+				|| strDivisorDeHierarquia == null
+				|| strDivisorDeHierarquia.isEmpty()) {
+			return orgao;
+		} else {
+			// Transforma a string de hierarquia em um array de string ,para
+			// facilitar a busca
+			arrayHierarquia = retornaArrayHierarquia(hierarquia,
+					strDivisorDeHierarquia);
+
+			if (arrayHierarquia.length == 1) {
+				orgao = "";
+			} else {
+				orgao = arrayHierarquia[arrayHierarquia.length - 2];
+			}
+		}
+		return orgao;
+	}
+
+	/*****
+	 * retornaArrayHierarquia: Transforma hierarquia em formato String para um array de String. 
+	 * {Category} TrataUorg 
+	 * {talendTypes} String 
+	 * {example} retornaArrayHierarquia (String hierarquia, String strDivisorDeHierarquia)
+	 * */
+	public static String[] retornaArrayHierarquia(String hierarquia,
+			String strDivisorDeHierarquia) {
+		/*
+		 * FINALIDADE: TRANSFORMA A HIERARQUIA EM FORMATO STRING PARA UM ARRAY
+		 * DE STRING. FACILITA A BUSCA DE ORGAOS.
+		 * *******************************
+		 * *****************************************************************
+		 * ERROS: QUALQUER ERRO DE ARGUMENTOS DO METODO, RETORNA NULL
+		 * ************
+		 * **********************************************************
+		 * *************************** EXEMPLO1 retornaArrayHierarquia
+		 * ("26(o)->1326(s)->2626(c)") - RETORNARÁ UM ARRAY
+		 * ["26(o),1326(s),2626(c)"].
+		 * ********************************************
+		 * ***************************************************** EXEMPLO2
+		 * retornaNivelOrgao ("") OU retornaNivelOrgao (null) - RETORNARÁ UM
+		 * ARRAY VAZIO , POIS A HIERARQUIA PASSADA COMO PARAMETRO DO METODO SERA
+		 * NULA OU VAZIA.
+		 * ********************************************************
+		 * *****************************************
+		 */
+		String[] hieAux = new String[0];
+
+		if (hierarquia == null || hierarquia.length() == 0
+				|| strDivisorDeHierarquia == null
+				|| strDivisorDeHierarquia.length() == 0) {
+			return hieAux;
+		} else {
+			hieAux = hierarquia.toUpperCase().split(strDivisorDeHierarquia,
+					retornaArrayHierarquia(hierarquia).size());
+		}
+		return hieAux;
+	}
+
+	/*****
+	 * separaOrgaoEmTermoHierarquia: Retorna o numero de orgao dentro de um termo de hierarquia. 
+	 * {Category} TrataUorg 
+	 * {talendTypes} int 
+	 * {example} separaOrgaoEmTermoHierarquia (String termo)
+	 * */
+	public static int separaOrgaoEmTermoHierarquia(String termo) {
+		/*
+		 * FINALIDADE: RETORNA O NUMERO DO ORGAO DENTRO DE UM TERMO DE
+		 * HIERARQUIA
+		 * ***********************************************************
+		 * ************************************* ERROS: QUALQUER ERRO DE
+		 * ARGUMENTOS DO METODO, RETORNA NULL
+		 * ************************************
+		 * ************************************************************* EX 1 -
+		 * separaOrgaoEmTermoHierarquia("26(o)->") retorna o numero 26
+		 * ***********
+		 * ***********************************************************
+		 * *************************** EX 2 -
+		 * separaOrgaoEmTermoHierarquia("26(xxys)->") retorna o numero 26
+		 * ********
+		 * **************************************************************
+		 * *************************** EX 3 - separaOrgaoEmTermoHierarquia("")
+		 * retorna o numero -1 separaOrgaoEmTermoHierarquia(null) retorna o
+		 * numero -1
+		 * *************************************************************
+		 * ************************************
+		 */
+		int orgao = -1;
+		String numeroAuxiliar = "";
+
+		if (termo == null || termo.length() == 0) {
+			return orgao;
+		} else {
+			// percorre o numero em busca de caracteres numericos
+			for (int p = 0; p <= termo.length(); p++) {
+
+				// se o caracter da posicao atual for numerico, armazene em uma
+				// variavel temporaria
+				if (Character.isDigit(termo.charAt(p))) {
+					numeroAuxiliar = numeroAuxiliar + termo.charAt(p);
+				} else {
+
+					// se encontrar um caracter nao numerico no if acima,
+					// interrompa a busca
+					break;
+				}
+			}
+			orgao = Integer.parseInt(numeroAuxiliar);
+			return orgao;
+		}
+	}
+
+	/*****
+	 * retornaArrayHierarquia: Transforma a hierarquia em formato string para um array de inteiros. 
+	 * {Category} TrataUorg 
+	 * {talendTypes} ArrayList<String> 
+	 * {example} retornaArrayHierarquia (String hierarquia)
+	 * */
+	private static ArrayList<String> retornaArrayHierarquia(String hierarquia) {
+		/*
+		 * FINALIDADE: METODO PRIVADO QUE EH UTILIZADO POR OUTROS METODOS DA
+		 * CLASSE. TRANSFORMA A HIERARQUIA EM FORMATO STRING PARA UM ARRAY DE
+		 * INTEIROS. FACILITA A BUSCA DE ORGAOS.
+		 * ********************************
+		 * ****************************************************************
+		 * ERROS: QUALQUER ERRO DE ARGUMENTOS DO METODO, RETORNA -1
+		 * **************
+		 * ********************************************************
+		 * *************************** EXEMPLO1 retornaArrayHierarquia
+		 * ("26.200.300.500") - RETORNARÁ UM ARRAY [26,200,300,500]. O 26 EH UM
+		 * ORGAO NIVEL 0 OU MASTER, 200 NIVEL 1, 300 NIVEL 2 E 500 NIVEL 3.
+		 * ******
+		 * ****************************************************************
+		 * *************************** EXEMPLO2 retornaArrayHierarquia
+		 * ("36.230") - RETORNARÁ UM ARRAY [36,230]. O 36 EH UM ORGAO NIVEL 0 OU
+		 * MASTER, 230 NIVEL 1.
+		 * **************************************************
+		 * *********************************************** EXEMPLO3
+		 * retornaNivelOrgao ("") OU retornaNivelOrgao (null) - RETORNARÁ UM
+		 * ARRAY VAZIO , POIS A HIERARQUIA PASSADA COMO PARAMETRO DO METODO SERA
+		 * NULA OU VAZIA.
+		 * ********************************************************
+		 * *****************************************
+		 */
+		int contador = -1;
+		String numero = "";
+		ArrayList<String> arrayHierarquia = new ArrayList<String>();
+
+		// RETORNA UM ARRAY VAZIO SE A STRING DE HIERARQUIA FOR VAZIA OU NULA
+		if (hierarquia == null || hierarquia.isEmpty()) {
+			return arrayHierarquia;
+		} else {
+			// ADICIONA TERMINADOR AO FIM DA STRING
+			// .trim() PARA ELIMINAR ESPACOS EM BRANCO
+			hierarquia = hierarquia.trim() + "/";
+
+			// PERCORRE TODA STRING DA HIERARQUIA
+			for (int i = 0; i < hierarquia.length(); i++) {
+				// O CARACTER ATUAL EH NUMERO? SE FORM VAI MONTANDO UMA STRING
+				// COM O NUMERO
+				if (Character.isDigit(hierarquia.charAt(i))) {
+					numero = numero + hierarquia.charAt(i);
+				} else {
+					// ARMAZENA OS NUMEROS NO ARRAY. TRANSFORMA A STRING EM
+					// INTEIRO
+					if (!(numero == "")) {
+						contador++;
+						arrayHierarquia.add((numero));
+						numero = "";
+					}
+				}
+			}
+			return arrayHierarquia;
+		}
+	}
+
+	/*****
+	 * retornaNivelOrgao: Retorna a profundidade que um orgao esta em uma determinada hierarquia 
+	 * {Category} TrataUorg 
+	 * {talendTypes} String
+	 * {example} retornaNivelOrgao (Integer codigoOrgao, String hierarquia)
+	 * */
+	public static int retornaNivelOrgao(Integer codigoOrgao, String hierarquia) {
+		/*
+		 * FINALIDADE: FUNCAO QUE RETORNA A PROFUNDIDADE QUE UM ORGAO ESTA EM
+		 * DETERMINADA HIERARQUIA.
+		 * **********************************************
+		 * ************************************************** ERROS: QUALQUER
+		 * ERRO DE ARGUMENTOS DO METODO, OU SE O ORGAO NAO FOR ENCONTRADO NA
+		 * HIERARQUIA, A FUNCAO RETONA -1.
+		 * ***************************************
+		 * ********************************************************** EXEMPLO1
+		 * retornaNivelOrgao(300, "26.200.300.500") - RETORNARÁ 2.
+		 * ***************
+		 * *******************************************************
+		 * *************************** EXEMPLO2 retornaNivelOrgao(26,
+		 * "26.200.300.500") - RETORNARÁ 0.
+		 * **************************************
+		 * *********************************************************** EXEMPLO3
+		 * retornaNivelOrgao(89, "26.200.300.500") - RETORNARÁ -1, POIS ORGAO 89
+		 * NAO SERA ENCONTRADO NA HIERARQUIA "26.200.300.500".
+		 * *******************
+		 * ***************************************************
+		 * ***************************
+		 */
+
+		ArrayList<String> guardaHierarquia = new ArrayList<String>();
+		guardaHierarquia = retornaArrayHierarquia(hierarquia);
+
+		// se existir qualquer problema com os argumentos da funcao retorna -1;
+		// se o codigo do orgao nao existir na hierarquia retorna -1;
+		if (guardaHierarquia.isEmpty() || codigoOrgao == null
+				|| codigoOrgao < 0) {
+			return -1;
+		} else {
+
+			return guardaHierarquia.indexOf(codigoOrgao);
+		}
+	}
+
+	/*****
+	 * retornaPaiMaster: Retorna a organizacao de nivel ao qual um orgao esta vinculado. Ou seja, o topo da hierarquia de um orgao. 
+	 * {Category} TrataUorg 
+	 * {talendTypes} int
+	 * {example} retornaPaiMaster (String hierarquia)
+	 * */
+	public static int retornaPaiMaster(String hierarquia) {
+		/*
+		 * FINALIDADE: FUNCAO QUE RETORNA A ORGANIZACAO DE NIVEL 0 A QUAL UM
+		 * ORGAO ESTA VINCULADO. OU SEJA O TOPO DA HIERARQUIA DE UM ORGAO.
+		 * EXEMPLO A PRESIDENCIA.
+		 * ***********************************************
+		 * ************************************************* ERROS: QUALQUER
+		 * ERRO NOS ARGUMENTOS DO METODO (EXEMPLO HIERARQUIA NULA) A FUNCAO
+		 * RETONA -1.
+		 * ************************************************************
+		 * ************************************* EXEMPLO1
+		 * retornaPaiMaster("26.200.300.500") - RETORNARÁ 26.
+		 * ********************
+		 * **************************************************
+		 * *************************** EXEMPLO2 retornaPaiMaster("900.200") -
+		 * RETORNARÁ 900.
+		 * ********************************************************
+		 * ***************************************** EXEMPLO3
+		 * retornaPaiMaster("") OU retornaPaiMaster(null)- RETORNARÁ -1.
+		 * *********
+		 * *************************************************************
+		 * ***************************
+		 */
+		ArrayList<String> guardaHierarquia = new ArrayList<String>();
+		guardaHierarquia = retornaArrayHierarquia(hierarquia);
+
+		// se existir qualquer problema com os argumentos da funcao retorna -1;
+		if (guardaHierarquia.isEmpty()) {
+			return -1;
+		} else {
+			/*
+			 * O PAI MASTER ESTARA NO TOPO DA ARVORE E SEMPRE SERA O ELEMENTO
+			 * ZERO.
+			 */
+			return Integer.parseInt(guardaHierarquia.get(0));
+		}
+	}
+
+	/*****
+	 * checaSeNumero: Verifica se um determinado codigo possui caracteres nao numericos. 
+	 * {Category} TrataUorg 
+	 * {talendTypes} String 
+	 * {example} checaSeNumero(String supostoInteiro)
+	 * */
+	public static boolean checaSeNumero(String supostoInteiro) {
+
+		if (supostoInteiro == null) {
+			return false;
+		} else {
+			try {
+				Integer.parseInt(supostoInteiro);
+			} catch (NumberFormatException ex) {
+				return false;
+			}
+			return true;
+		}
+	}
+
+	/*****
+	 * retornaPaiRaiz: Retorna a organizacao de nivel 1 ao qual um orgao esta vinculado. 
+	 * {Category} TrataUorg 
+	 * {talendTypes} String
+	 * {example} retornaPaiRaiz(String hierarquia)
+	 * */
+	public static int retornaPaiRaiz(String hierarquia) {
+		/*
+		 * FINALIDADE: FUNCAO QUE RETORNA A ORGANIZACAO DE NIVEL 1 A QUAL UM
+		 * ORGAO ESTA VINCULADO. EXEMPLO DE UM MINISTERIO (PRESIDENCIA ->
+		 * MINISTERIO) QUE ESTA ABAIXO DE UMA ORGANIZACAO DE NIVEL
+		 * 0(PRESIDENCIA).
+		 * ******************************************************
+		 * ****************************************** ERROS: QUALQUER ERRO NOS
+		 * ARGUMENTOS DO METODO (EXEMPLO HIERARQUIA NULA) A FUNCAO RETONA -1.
+		 * ****
+		 * ******************************************************************
+		 * *************************** EXEMPLO1 retornaPaiRaiz("26.200.300.500")
+		 * - RETORNARÁ 200.
+		 * ******************************************************
+		 * ******************************************* EXEMPLO2
+		 * retornaPaiRaiz("900.5667.0394.2993") - RETORNARÁ 5667.
+		 * ****************
+		 * ******************************************************
+		 * *************************** EXEMPLO3 retornaPaiRaiz("900.5667") -
+		 * RETORNARA 5667. NESTE CASO(DE UM MINISTERIO) O PRORIO ORGAO JA EH UM
+		 * ORGAO RAIZ.
+		 * ***********************************************************
+		 * ************************************** EXEMPLO4 retornaPaiRaiz("900")
+		 * - RETORNARA 0(ZERO). NESTE CASO UM PAI MASTER(EXEMPLO DA PRESIDENCIA)
+		 * NAO TERA UM PAI RAIZ.
+		 * *************************************************
+		 * ************************************************ EXEMPLO5
+		 * retornaPaiRaiz("") OU retornaPaiMaster(null)- RETORNARÁ -1.
+		 */
+		ArrayList<String> guardaHierarquia = new ArrayList<String>();
+		guardaHierarquia = retornaArrayHierarquia(hierarquia);
+
+		// QUALQUER PROBLEMA NA CHAMADA DA FUNCAO RETORNA -1;
+		if (guardaHierarquia.isEmpty()) {
+			return -1;
+		} else {
+			/*
+			 * EXEMPLO4 - PRESIDENCIA OU ORGAO NAO VINCULADO A OUTRO
+			 */
+			if (guardaHierarquia.size() == 1) {
+				return 0;
+			} else {
+				/*
+				 * EXEMPLO1,2 e 3 (PROPRIO MINISTERIO) - SEMPRE RETORNARA O
+				 * NIVEL 1 OU SEJA, O MINISTERIO A QUAL O ORGAO ESTA VINCULADO
+				 */
+				return Integer.parseInt(guardaHierarquia.get(1));
+			}
+		}
+	}
+
+	/**
+	 * Verifica se as unidades hierarquicas abaixo possuem o flag de Organizacao 'O'. 
+	 * {talendTypes} boolean 
+	 * {Category} TrataUorg 
+	 * {param} Integer(2981) oldStr: The whole string. 
+	 * {param} string("26(n)->2981(n)->2033(o)") newStr: Regx. 
+	 * {param} string('o') replacement: Replacement. 
+	 * {param} string("->") replacement: Replacement. 
+	 * {example} isPossuiOrgaoAbaixo() #
+	 * true
+	 */
+	public static int isPossuiOrgaoAbaixo(Integer codigoOrgao,
+			String hierarquia, Character charDeOrgao,
+			String strDivisorDeHierarquia) {
+		int count = -1;
+
+		if (codigoOrgao == null || hierarquia == null || charDeOrgao == null
+				|| hierarquia.trim().isEmpty()) {
+			return count;
+		} else {
+			count++;
+			String[] hieAux = hierarquia.toUpperCase().split(
+					strDivisorDeHierarquia,
+					retornaArrayHierarquia(hierarquia).size());
+
+			int nivelOrgaoPesquisa = retornaNivelOrgao(codigoOrgao, hierarquia) + 1;
+
+			for (int i = nivelOrgaoPesquisa; i < hieAux.length; i++) {
+				if (hieAux[i].indexOf(Character.toUpperCase(charDeOrgao)) > -1) {
+					count++;
+				}
+			}
+			return count;
+		}
+	}
+}

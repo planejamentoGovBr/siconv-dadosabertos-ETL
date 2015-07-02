@@ -1,0 +1,41 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<externalNode i18n.job.component.parameters="Component Parameters:" i18n.job.properties="Propriedades" i18n.job.values="Values" i18n.mapper.table.for="Mapper table for " i18n.mapper.table.properties="Mapper table Properties" i18n.job.name="Nome" i18n.tmap.matching.mode="Matching-mode" i18n.mapper.table.isminimized="isMinimized" i18n.tmap.isreject="isReject" i18n.tmap.isrejectinnnerjoin="isRejectInnerJoin" i18n.tmap.isinnerjoin="isInnerJoin" i18n.tmap.expressionfilter="expressionFilter" i18n.mapper.table.metadata.entries="Metadata Table Entries" i18n.job.type="Type" i18n.mapper.table.expression="Expressão" i18n.tmap.isnullable="isNullable" i18n.tmap.constraint.entries="Constraint Table Entries" name="tMap_3" preview="pictures/_f8Mv0JXNEeSdS4Ubd4SS3A-tMap_3-PREVIEW.bmp">
+  <parameters>
+    <column name="tStatCatcher Statistics">false</column>
+    <column name="Permitir execução em paralelo">false</column>
+    <column name="Mapping links display as: ">AUTO</column>
+    <column name="Temp data directory path: "></column>
+    <column name="Max buffer size (nb of rows): ">2000000</column>
+    <column name="Visualizar informações">true</column>
+    <column name="Comentário"><![CDATA[Componente responsável por mapear os dados provenientes do 'Arquivo Pessoa Responsavel' com a tabela 'pessoa_responsavel' do SICONV.]]></column>
+    <column name="Use an existing validation rule">false</column>
+  </parameters>
+  <mapperTable type="input">
+    <table name="complemento" matching-mode="UNIQUE_MATCH" lookup-mode="LOAD_ONCE" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false">
+      <metadataTableEntries>
+        <entry name="nome" type="String" expression="" isNullable="true"/>
+        <entry name="identificacao" type="String" expression="" isNullable="true"/>
+        <entry name="cpf" type="String" expression="" isNullable="true"/>
+        <entry name="cargo" type="String" expression="" isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="output">
+    <table name="saida_complemento" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false">
+      <metadataTableEntries>
+        <entry name="id" type="String" expression="routines.cripto_cpf.criptografar(complemento.cpf)     " isNullable="true"/>
+        <entry name="nome" type="String" expression="complemento.nome    " isNullable="true"/>
+        <entry name="identificacao" type="String" expression="complemento.identificacao     " isNullable="true"/>
+        <entry name="cpf" type="String" expression="complemento.cpf.substring(0,3).replaceAll(&quot;[0-9]&quot;, &quot;*&quot;) + complemento.cpf.substring(3,9) +
+complemento.cpf.substring(9).replaceAll(&quot;[0-9]&quot;, &quot;*&quot;)
+
+                           " isNullable="false"/>
+        <entry name="cargo" type="String" expression="complemento.cargo        " isNullable="true"/>
+      </metadataTableEntries>
+    </table>
+  </mapperTable>
+  <mapperTable type="var">
+    <table name="Var" isMinimized="false" isReject="false" isRejectInnerJoin="false" isInnerJoin="false" isPersistent="false" expressionFilter="null" activateExpressionFilter="false" activateCondensedTool="false"/>
+  </mapperTable>
+</externalNode>

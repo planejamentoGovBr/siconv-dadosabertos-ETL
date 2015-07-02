@@ -1,0 +1,50 @@
+package routines;
+
+import java.io.IOException;  
+import java.io.InputStream;  
+import org.apache.commons.net.ftp.*;  
+
+public class ClienteFTP {  
+      
+    public static boolean criarDiretorio(  
+            String host,  
+            int port,  
+            String dir,  
+            String username,  
+            String password) {  
+          
+        InputStream in = null;  
+        
+        FTPClient ftp = new FTPClient();  
+          
+        try {  
+             
+            System.out.println("Conectando ao servidor " + host + ":" + port);  
+            ftp.connect(host, port);  
+              
+            System.out.println("Autenticando FTP...");  
+            ftp.login(username, password);  
+              
+            System.out.println("Criando diretório: " + dir);  
+            ftp.makeDirectory(dir);  
+
+              
+            return true;  
+              
+        } catch (Exception e) {  
+            e.printStackTrace();  
+            return false;  
+              
+        } finally {  
+            try {  
+                System.out.println("Fechando sessão...");  
+                ftp.logout();  
+                System.out.println("Desconectando...");  
+                ftp.disconnect();  
+            } catch (IOException e) {  
+                e.printStackTrace();  
+            }  
+        }  
+    }  
+
+}
